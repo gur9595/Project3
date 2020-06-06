@@ -1,4 +1,3 @@
-<%@page import="java.io.File"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="util.PagingUtil"%>
 <%@page import="model1.BbsDTO"%>
@@ -8,9 +7,8 @@
 <%@page import="model1.BbsDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../include/global_head.jsp"%>
-
-<%@ include file="../member/common/isFlag.jsp"%>
+<%@ include file="isFlag.jsp"%>
+<%@ include file="isLogin.jsp"%>
 <%
 	//한글깨짐처리 - 검색폼에서 입력된 한글이 전송되기때문
 	request.setCharacterEncoding("UTF-8");
@@ -83,48 +81,45 @@
 	//DB자원해제
 	dao.close();
 %>
-<body>
-<center>
-	<div id="wrap">
-		<%@ include file="../include/top.jsp"%>
+<!DOCTYPE html>
+<html lang="en">
 
-		<img src="../images/space/sub_image.jpg" id="main_visual" />
+<head>
 
-		<div class="contents_box">
-			<div class="left_contents">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
+<title>자유게시판 관리</title>
 
-				<%@ include file="../include/space_leftmenu.jsp"%>
-			</div>
-			<div class="right_contents">
-				<div class="top_title">
-					<%
-						if (bname.equals("notice")) {
-					%>
-					<img src="../images/space/sub01_title.gif" class="con_title" />
-					<%
-						} else if (bname.equals("program")) {
-					%>
-					<img src="../images/space/sub02_title.gif" class="con_title" />
-					<%
-						} else if (bname.equals("freeboard")) {
-					%>
-					<img src="../images/space/sub03_title.gif" class="con_title" />
-					<%
-						} else if (bname.equals("photo")) {
-					%>
-					<img src="../images/space/sub04_title.gif" class="con_title" />
-					<%
-						} else if (bname.equals("info")) {
-					%>
-					<img src="../images/space/sub05_title.gif" class="con_title" />
-					<%
-						}
-					%>
-					<p class="location">
-						<img src="../images/center/house.gif" />&nbsp;&nbsp;열린공간&nbsp;>&nbsp;<%=boardTitle%>
-					<p>
-				</div>
+<!-- Custom fonts for this template-->
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
+
+<!-- Page level plugin CSS-->
+<link href="vendor/datatables/dataTables.bootstrap4.css"
+	rel="stylesheet">
+
+<!-- Custom styles for this template-->
+<link href="css/sb-admin.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+	<%@ include file="./include/top.jsp"%>
+	<div id="wrapper">
+		<%@ include file="./include/left.jsp"%>
+		<div id="content-wrapper">
+			<div class="container-fluid">
+
+				<!-- Breadcrumbs-->
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><%=boardTitle %></li>
+				</ol>
+				<!-- ********************************************************************************************* -->
 				<!-- *********************************** 검 색 부 분 *********************************************** -->
 				<div class="row">
 					<form class="form-inline ml-auto" name="searchFrm" method="get">
@@ -172,7 +167,7 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-						<a href="sub03_view.jsp?num=<%=dto.getNum()%>&nowPage=<%=nowPage%>&<%=queryStr%>">
+						<a href="board_free_view.jsp?num=<%=dto.getNum()%>&nowPage=<%=nowPage%>&<%=queryStr%>">
 						<img src="../Upload/<%=dto.getImg() %>" width="200" height="200"/>
 						</a>
 						</td>
@@ -258,7 +253,7 @@
 							<tr>
 								<td class="text-center"><%=vNum%></td>
 								<td class="text-left"><a
-									href="sub03_view.jsp?num=<%=dto.getNum()%>&nowPage=<%=nowPage%>&<%=queryStr%>"><%=dto.getTitle()%></a>
+									href="board_free_view.jsp?num=<%=dto.getNum()%>&nowPage=<%=nowPage%>&<%=queryStr%>"><%=dto.getTitle()%></a>
 								</td>
 								<td class="text-center"><%=dto.getId()%></td>
 								<td class="text-center"><%=dto.getPostDate()%></td>
@@ -293,14 +288,11 @@
 					<div class="col text-right">
 						<!-- 각종 버튼 부분 -->
 						<!-- 자유게시판과 질문과답변에서만  글쓰기버튼처리-->
-						<%
-							if (bname.equals("freeboard") || bname.equals("photo") || bname.equals("info")) {
-						%>
+
+						
 						<button type="button" class="btn btn-primary"
 							onclick="location.href='sub03_write.jsp?bname=<%=bname%>';">글쓰기</button>
-						<%
-							}
-						%>
+						
 
 					</div>
 				</div>
@@ -311,18 +303,38 @@
 					<div class="col">
 
 						<ul class="pagination justify-content-center">
-							<%=PagingUtil.pagingBS4(totalRecordCount, pageSize, blockPage, nowPage, "sub03.jsp?" + queryStr)%>
+							<%=PagingUtil.pagingBS4(totalRecordCount, pageSize, blockPage, nowPage, "board_free.jsp?" + queryStr)%>
 						</ul>
 					</div>
 				</div>
-				<!-- **************************************** 끝 ************************************************************** -->
+
+
+				<!-- ********************************************************************************************* -->
+				<%@ include file="./include/footer.jsp"%>
 			</div>
+			<!-- /.content-wrapper -->
 		</div>
-		<%@ include file="../include/quick.jsp"%>
 	</div>
+	<!-- /#wrapper -->
 
+	<!-- Bootstrap core JavaScript-->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-	<%@ include file="../include/footer.jsp"%>
-	</center>
+	<!-- Core plugin JavaScript-->
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Page level plugin JavaScript-->
+	<script src="vendor/chart.js/Chart.min.js"></script>
+	<script src="vendor/datatables/jquery.dataTables.js"></script>
+	<script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="js/sb-admin.min.js"></script>
+
+	<!-- Demo scripts for this page-->
+	<script src="js/demo/datatables-demo.js"></script>
+	<script src="js/demo/chart-area-demo.js"></script>
 </body>
+
 </html>

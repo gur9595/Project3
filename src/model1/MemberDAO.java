@@ -79,8 +79,39 @@ public class MemberDAO {
 	public Map<String, String> getMemberMap(String id, String pass) {
 		Map<String, String> maps= new HashMap<String, String>();
 		
-		String query = "select id, pass, name from membership where id=? and pass=?";
+		String query = "select id, pass, name, authority from membership where id=? and pass=?";
+
+		try {
+			//prepared 객체 생성
+			psmt =con.prepareStatement(query);
+			//쿼리문의 인파라미터 설정
+			psmt.setString(1, id);
+			psmt.setString(2, pass);
+			//오라클로 쿼리문 전송및 결과셋(ResultSet) 반환받음
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				maps.put("id", rs.getString(1));
+				maps.put("pass", rs.getString(2));
+				maps.put("name", rs.getString(3));
+				maps.put("authority", rs.getString(4));
+				
+			} else {
+				System.out.println("결과셋이없습니다");
+			}
+		} catch (Exception e) {
+			System.out.println("getMemberMap 오류");
+			e.printStackTrace();
+			
+		}
+		return maps;
+	}
+	
+	public Map<String, String> getAdminMap(String id, String pass) {
+		Map<String, String> maps= new HashMap<String, String>();
 		
+		String query = "select id, pass, name from membership where id=? and pass=? and authority='admin' ";
+
 		try {
 			//prepared 객체 생성
 			psmt =con.prepareStatement(query);
@@ -126,7 +157,42 @@ public class MemberDAO {
 				System.out.println("결과셋이없습니다");
 			}
 		} catch (Exception e) {
-			System.out.println("getMemberMap 오류");
+			System.out.println("getIdFindMap 오류");
+			e.printStackTrace();
+			
+		}
+		return maps;
+	}
+	
+	public Map<String, String> getPwFindMap(String id, String name, String email) {
+		Map<String, String> maps= new HashMap<String, String>();
+		
+		String query = "select id, name, email, pass from membership where id=? and name=? and email=?";
+		
+		try {
+			psmt =con.prepareStatement(query);
+			
+			psmt.setString(1, id);
+			psmt.setString(2, name);
+			psmt.setString(3, email);
+			
+			rs = psmt.executeQuery();
+		
+			if(rs.next()) {
+				maps.put("id", rs.getString(1));
+				maps.put("name", rs.getString(2));
+				maps.put("email", rs.getString(3));
+				maps.put("pass", rs.getString(4));
+				
+				System.out.println("2 아이디 : " + rs.getString(1));
+				System.out.println("2 이름 : " + rs.getString(2));
+				System.out.println("2 이메일 : " + rs.getString(3));
+				System.out.println("2 비밀번호 : " + rs.getString(4));
+			} else {
+				System.out.println("결과셋이없습니다");
+			}
+		} catch (Exception e) {
+			System.out.println("getPwFindMap 오류");
 			e.printStackTrace();
 			
 		}
@@ -164,7 +230,7 @@ public class MemberDAO {
 		return x;
 	}
 	
-public boolean idFind(String name, String email) {
+	/*public boolean idFind(String name, String email) {
 		
 		String query = "select id from membership where name=? and email=?";
 		
@@ -179,13 +245,13 @@ public boolean idFind(String name, String email) {
 			//오라클로 쿼리문 전송및 결과셋(ResultSet) 반환받음
 			rs = psmt.executeQuery();
 			
-			/*while(rs.next()) {
+			while(rs.next()) {
 				if(rs.getString("id").equals(id)) {
 					x= true;
 				}else {
 					return false;
 				}
-			}*/
+			}
 			if(rs.next()) x = true;
 			
 		} catch (Exception e) {
@@ -194,7 +260,7 @@ public boolean idFind(String name, String email) {
 			
 		}
 		return x;
-	}
+	}*/
 	
 	
 }

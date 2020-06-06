@@ -22,7 +22,38 @@
 				</div>
 				<div class="con_box">
 					<p class="con_tit"><img src="../images/center/sub07_tit01.gif" alt="오시는길" /></p>
-					<img src="../images/center/sub07_img01.gif" class="con_img"/>
+					<!-- ***************************************************************************************  -->
+					
+					
+					
+					<div id="map" style="width:100%;height:350px;"></div>
+					<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=36334fae12132b7c9a4b0c870101ef91"></script>
+					<script>
+					var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+					    mapOption = { 
+					        center: new kakao.maps.LatLng(37.55153885529197, 127.02096992812697), // 지도의 중심좌표
+					        level: 3 // 지도의 확대 레벨
+					    };
+					
+					// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+					
+					var map = new kakao.maps.Map(mapContainer, mapOption); 
+					
+					var markerPosition  = new kakao.maps.LatLng(37.55153885529197, 127.02096992812697); 
+
+					// 마커를 생성합니다
+					var marker = new kakao.maps.Marker({
+					    position: markerPosition
+					});
+
+					// 마커가 지도 위에 표시되도록 설정합니다
+					marker.setMap(map);
+					
+					</script>
+
+
+
+					<!-- ***************************************************************************************  -->
 					<p class="con_tit"><img src="../images/center/sub07_tit02.gif" alt="자가용 오시는길" /></p>
 					<div class="in_box">
 						<p class="dot_tit">강북 방향</p>

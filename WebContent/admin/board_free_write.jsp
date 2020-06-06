@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ include file="isFlag.jsp"%>
 <%@ include file="isLogin.jsp"%>
 <!DOCTYPE html>
@@ -7,29 +7,30 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
-  <title>관리</title>
+<title>자유게시판 관리</title>
 
-  <!-- Custom fonts for this template-->
+<!-- Custom fonts for this template-->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
 	type="text/css">
-	
+
 <!-- Page level plugin CSS-->
 <link href="vendor/datatables/dataTables.bootstrap4.css"
 	rel="stylesheet">
-	
+
 <!-- Custom styles for this template-->
 <link href="css/sb-admin.css" rel="stylesheet">
 
 </head>
 
 <body id="page-top">
-	
+
 	<%@ include file="./include/top.jsp"%>
 	<div id="wrapper">
 		<%@ include file="./include/left.jsp"%>
@@ -38,10 +39,41 @@
 
 				<!-- Breadcrumbs-->
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><%=boardTitle %></li>
+					<li class="breadcrumb-item"><%=boardTitle%></li>
 				</ol>
 				<!-- ********************************************************************************************* -->
+				<div>
+					<form name="writeFrm" method="post" action="../admin/proc/AdminWriteProc.jsp">
+						<input type="hidden" name="bname" value="<%=bname%>" />
+						<table class="table table-bordered">
+							<colgroup>
+								<col width="20%" />
+								<col width="*" />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th class="text-center" style="vertical-align: middle;">제목</th>
+									<td><input type="text" name="title" class="form-control" />
+									</td>
+								</tr>
+								<tr>
+									<th class="text-center" style="vertical-align: middle;">내용</th>
+									<td><textarea rows="10" name="content"
+											class="form-control"></textarea></td>
+								</tr>
+							</tbody>
+						</table>
 
+						<div class="row text-center" style="">
+							<!-- 각종 버튼 부분 -->
+
+							<button type="submit" class="btn btn-danger">전송하기</button>
+							<button type="reset" class="btn">Reset</button>
+							<button type="button" class="btn btn-warning"
+								onclick="location.href='../admin/board_free.jsp?bname=<%=bname%>';">리스트보기</button>
+						</div>
+					</form>
+				</div>
 
 
 				<!-- ********************************************************************************************* -->

@@ -11,6 +11,67 @@
   	<url-pattern>/main/main.do</url-pattern>
   </servlet-mapping>
   
+     <!-- 자료실 리스트 -->
+   <servlet>
+      <servlet-name>DataRoomList</servlet-name>
+      <servlet-class>controller.ListCtrl</servlet-class>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>DataRoomList</servlet-name>
+      <url-pattern>/community/sub02.do</url-pattern>
+   </servlet-mapping>
+  
+  <!-- 자료실 글쓰기 -->
+   <servlet>
+      <servlet-name>DataRoomWrite</servlet-name>
+      <servlet-class>controller.WriteCtrl</servlet-class>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>DataRoomWrite</servlet-name>
+      <url-pattern>/community/DataWrite</url-pattern>
+   </servlet-mapping>
+  
+  <!-- 파일다운로드 -->
+  <servlet>
+      <servlet-name>DataRoomDownload</servlet-name>
+      <servlet-class>controller.DownloadCtrl</servlet-class>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>DataRoomDownload</servlet-name>
+      <url-pattern>/community/Download</url-pattern>
+   </servlet-mapping>
+   
+  <!-- 게시글 상세보기(상세보기) -->
+  <servlet>
+      <servlet-name>DataRoomView</servlet-name>
+      <servlet-class>controller.ViewCtrl</servlet-class>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>DataRoomView</servlet-name>
+      <url-pattern>/community/DataView</url-pattern>
+   </servlet-mapping>
+  
+  <!-- 자료실 수정 -->
+   <servlet>
+      <servlet-name>DataRoomEdit</servlet-name>
+      <servlet-class>controller.EditCtrl</servlet-class>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>DataRoomEdit</servlet-name>
+      <url-pattern>/community/DataEdit</url-pattern>
+   </servlet-mapping>
+  
+  <!-- 삭제처리 -->
+   <servlet>
+      <servlet-name>DataRoomDelete</servlet-name>
+      <servlet-class>controller.DeleteCtrl</servlet-class>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>DataRoomDelete</servlet-name>
+      <url-pattern>/community/DataDelete</url-pattern>
+   </servlet-mapping>
+  
+  
   <!-- 초기화 파라미터 -->
   <!-- 마리아DB 드라이버와 연결정보 -->
   <context-param>
@@ -25,7 +86,7 @@
   <!-- 게시판 페이지에 사용할 상수 -->
   <context-param>
   	<param-name>PAGE_SIZE</param-name>
-  	<param-value>2</param-value>
+  	<param-value>9</param-value>
   </context-param>
   <context-param>
   	<param-name>BLOCK_PAGE</param-name>

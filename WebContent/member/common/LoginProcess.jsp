@@ -20,7 +20,10 @@ if(memberInfo.get("id")!=null){
 	session.setAttribute("USER_ID", memberInfo.get("id"));
 	session.setAttribute("USER_PW", memberInfo.get("pass"));
 	session.setAttribute("USER_NAME", memberInfo.get("name"));
-	System.out.println(id_save);
+	session.setAttribute("authority", memberInfo.get("authority"));
+	
+	System.out.println(memberInfo.get("authority"));
+	
 	
 	if(id_save==null){
 		//아이디저장하기에 체크하지 않았을때
@@ -41,9 +44,12 @@ if(memberInfo.get("id")!=null){
 	}
 	
 	response.sendRedirect("../../main/main.jsp");
-}else{
-	request.setAttribute("ERROR_MSG", "넌 회원이 아니군 ㅡㅡ;");
-	request.getRequestDispatcher("../member/login.jsp").forward(request, response);
+}else{%>
+<script>
+alert("회원이 아닙니다");
+history.go(-1);
+</script>
+<%
 }
 %>
 

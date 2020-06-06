@@ -13,7 +13,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>관리</title>
+  <title>프로그램일정 관리</title>
 
   <!-- Custom fonts for this template-->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -29,7 +29,6 @@
 </head>
 
 <body id="page-top">
-	
 	<%@ include file="./include/top.jsp"%>
 	<div id="wrapper">
 		<%@ include file="./include/left.jsp"%>
