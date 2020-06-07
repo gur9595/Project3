@@ -54,36 +54,115 @@
 				</ol>
 				<!-- ********************************************************************************************* -->
 
-				<form name="writeFrm" method="post" action="./proc/AdminEditProc.jsp">
-					<input type="hidden" name="num" value="<%=dto.getNum()%>" /> <input
-						type="hidden" name="bname" value="<%=bname%>" />
-					<table class="table table-bordered">
-						<colgroup>
-							<col width="20%" />
-							<col width="*" />
-						</colgroup>
-						<tbody>
-							<tr>
-								<th class="text-center" style="vertical-align: middle;">제목</th>
-								<td><input type="text" name="title" class="form-control"
-									value="<%=dto.getTitle()%>" /></td>
-							</tr>
-							<tr>
-								<th class="text-center" style="vertical-align: middle;">내용</th>
-								<td><textarea rows="10" name="content" class="form-control"><%=dto.getContent()%></textarea></td>
-							</tr>
-						</tbody>
-					</table>
+				<div>
+						<%if(bname.equals("freeboard")||bname.equals("notice")) {%>
+						<form name="editFrm" method="post" action="./proc/AdminEditProc.jsp" >
+							<input type="hidden" name="num" value="<%=dto.getNum()%>" /> 
+							
+							<input type="hidden" name="bname" value="<%=bname%>" />
+							<table class="table table-bordered">
+								<colgroup>
+									<col width="20%" />
+									<col width="*" />
+								</colgroup>
+								<tbody>
+									<tr>
+										<th class="text-center" style="vertical-align: middle;">제목</th>
+										<td><input type="text" name="title" class="form-control"
+											value="<%=dto.getTitle()%>" /></td>
+									</tr>
+									<tr>
+										<th class="text-center" style="vertical-align: middle;">내용</th>
+										<td><textarea rows="10" name="content"
+												class="form-control"><%=dto.getContent()%></textarea></td>
+									</tr>
+									
+								</tbody>
+							</table>
 
-					<div class="row text-center" style="">
-						<!-- 각종 버튼 부분 -->
+							<div class="row text-center" style="">
+								<!-- 각종 버튼 부분 -->
 
-						<button type="submit" class="btn btn-danger">전송하기</button>
-						<button type="reset" class="btn">Reset</button>
-						<button type="button" class="btn btn-warning"
-							onclick="location.href='board_free.jsp?bname=<%=bname %>';">리스트보기</button>
+								<button type="submit" class="btn btn-danger">전송하기</button>
+								<button type="reset" class="btn">Reset</button>
+								<button type="button" class="btn btn-warning"
+									onclick="location.href='sub03.jsp?bname=<%=bname %>';">리스트보기</button>
+							</div>
+						</form>
+						<%}else if(bname.equals("info")) {%>
+						
+						<form name="editFrm" method="post" action="./proc/AdminUploadProc_edit.jsp" enctype="multipart/form-data">
+							<input type="hidden" name="num" value="<%=dto.getNum()%>" /> 
+							
+							<input type="hidden" name="bname" value="<%=bname%>" />
+							<table class="table table-bordered">
+								<colgroup>
+									<col width="20%" />
+									<col width="*" />
+								</colgroup>
+								<tbody>
+									<tr>
+										<th class="text-center" style="vertical-align: middle;">제목</th>
+										<td><input type="text" name="title" class="form-control"
+											value="<%=dto.getTitle()%>" /></td>
+									</tr>
+									<tr>
+										<th class="text-center" style="vertical-align: middle;">내용</th>
+										<td><textarea rows="10" name="content"
+												class="form-control"><%=dto.getContent()%></textarea></td>
+									</tr>
+									<tr>
+										<th class="text-center" style="vertical-align: middle;">첨부파일</th>
+										<td><input type="file" name="chumFile1" class="form-control" value="<%=dto.getOfile()%>"/></td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="row text-center" style="">
+								<!-- 각종 버튼 부분 -->
+								<button type="submit" class="btn btn-danger">전송하기</button>
+								<button type="reset" class="btn">Reset</button>
+								<button type="button" class="btn btn-warning"
+									onclick="location.href='sub03.jsp?bname=<%=bname %>';">리스트보기</button>
+							</div>
+						</form>
+						<%}else if(bname.equals("photo")){ %>
+						<form name="editFrm" method="post" action="./proc/AdminUploadProc_img_edit.jsp" enctype="multipart/form-data">
+							<input type="hidden" name="num" value="<%=dto.getNum()%>" /> 
+							
+							<input type="hidden" name="bname" value="<%=bname%>" />
+							<table class="table table-bordered">
+								<colgroup>
+									<col width="20%" />
+									<col width="*" />
+								</colgroup>
+								<tbody>
+									<tr>
+										<th class="text-center" style="vertical-align: middle;">제목</th>
+										<td><input type="text" name="title" class="form-control"
+											value="<%=dto.getTitle()%>" /></td>
+									</tr>
+									<tr>
+										<th class="text-center" style="vertical-align: middle;">내용</th>
+										<td><textarea rows="10" name="content"
+												class="form-control"><%=dto.getContent()%></textarea></td>
+									</tr>
+									<tr>
+										<th class="text-center" style="vertical-align: middle;">이미지</th>
+										<<td><input type="file" name="img" class="form-control" /></td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="row text-center" style="">
+								<!-- 각종 버튼 부분 -->
+								<button type="submit" class="btn btn-danger">전송하기</button>
+								<button type="reset" class="btn">Reset</button>
+								<button type="button" class="btn btn-warning"
+									onclick="location.href='sub03.jsp?bname=<%=bname %>';">리스트보기</button>
+							</div>
+						</form>
+						<%} %>
+
 					</div>
-				</form>
 
 				<!-- ********************************************************************************************* -->
 				<%@ include file="./include/footer.jsp"%>

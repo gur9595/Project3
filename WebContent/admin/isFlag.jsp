@@ -27,5 +27,11 @@ case "photo":
 case "info":
 	boardTitle = "정보자료실 관리";
 	break;
+case "clean":
+	boardTitle = "블루크리닝 리스트";
+	break;
+case "leaning":
+	boardTitle = "체험학습신청 리스트";
+	break;
 }
 %>

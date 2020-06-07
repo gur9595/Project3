@@ -44,7 +44,7 @@
 				</ol>
 				<!-- ********************************************************************************************* -->
 					<!-- 게시판리스트부분 -->
-					<table class="table table-bordered table-hover table-striped">
+					<%-- <table class="table table-bordered table-hover table-striped">
 						<colgroup>
 							<col width="60px" />
 							<col width="*" />
@@ -162,7 +162,7 @@
 							<%=PagingUtil.pagingBS4(totalRecordCount, pageSize, blockPage, nowPage, "board_free.jsp?" + queryStr)%>
 						</ul>
 					</div>
-				</div>
+				</div> --%>
 
 
 				<!-- ********************************************************************************************* -->

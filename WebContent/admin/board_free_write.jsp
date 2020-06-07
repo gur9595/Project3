@@ -43,37 +43,113 @@
 				</ol>
 				<!-- ********************************************************************************************* -->
 				<div>
-					<form name="writeFrm" method="post" action="../admin/proc/AdminWriteProc.jsp">
-						<input type="hidden" name="bname" value="<%=bname%>" />
-						<table class="table table-bordered">
-							<colgroup>
-								<col width="20%" />
-								<col width="*" />
-							</colgroup>
-							<tbody>
-								<tr>
-									<th class="text-center" style="vertical-align: middle;">제목</th>
-									<td><input type="text" name="title" class="form-control" />
-									</td>
-								</tr>
-								<tr>
-									<th class="text-center" style="vertical-align: middle;">내용</th>
-									<td><textarea rows="10" name="content"
-											class="form-control"></textarea></td>
-								</tr>
-							</tbody>
-						</table>
+						<%if(bname.equals("freeboard") || bname.equals("notice")) {%>
+						<form name="writeFrm" method="post"
+							action="../admin/proc/AdminWriteProc.jsp">
+							<input type="hidden" name="bname" value="<%=bname%>" />
+							<table class="table table-bordered">
+								<colgroup>
+									<col width="20%" />
+									<col width="*" />
+								</colgroup>
+								<tbody>
+									<tr>
+										<th class="text-center" style="vertical-align: middle;">제목</th>
+										<td><input type="text" name="title" class="form-control" />
+										</td>
+									</tr>
+									<tr>
+										<th class="text-center" style="vertical-align: middle;">내용</th>
+										<td><textarea rows="10" name="content"
+												class="form-control"></textarea></td>
+									</tr>
+								</tbody>
+							</table>
 
-						<div class="row text-center" style="">
-							<!-- 각종 버튼 부분 -->
+							<div class="row text-center" style="">
+								<!-- 각종 버튼 부분 -->
 
-							<button type="submit" class="btn btn-danger">전송하기</button>
-							<button type="reset" class="btn">Reset</button>
-							<button type="button" class="btn btn-warning"
-								onclick="location.href='../admin/board_free.jsp?bname=<%=bname%>';">리스트보기</button>
-						</div>
-					</form>
-				</div>
+								<button type="submit" class="btn btn-danger">전송하기</button>
+								<button type="reset" class="btn">Reset</button>
+								<button type="button" class="btn btn-warning"
+									onclick="location.href='../admin/board_free.jsp?bname=<%=bname%>';">리스트보기</button>
+							</div>
+						</form>
+						<%}else if(bname.equals("info")){ %>
+						<form action="./proc/AdminUploadProc.jsp" name="writeFrm" method="post" 
+						enctype="multipart/form-data">
+							<input type="hidden" name="bname" value="<%=bname%>" />
+							<table class="table table-bordered">
+								<colgroup>
+									<col width="20%" />
+									<col width="*" />
+								</colgroup>
+								<tbody>
+									<tr>
+										<th class="text-center" style="vertical-align: middle;">제목</th>
+										<td><input type="text" name="title" class="form-control" />
+										</td>
+									</tr>
+									<tr>
+										<th class="text-center" style="vertical-align: middle;">내용</th>
+										<td><textarea rows="10" name="content"
+												class="form-control"></textarea></td>
+									</tr>
+									<tr>
+										<th class="text-center" style="vertical-align: middle;">첨부파일</th>
+										<td><input type="file" name="chumFile1"
+											class="form-control" /></td>
+									</tr>
+								</tbody>
+							</table>
+
+							<div class="row text-center" style="">
+								<!-- 각종 버튼 부분 -->
+
+								<button type="submit" class="btn btn-danger">전송하기</button>
+								<button type="reset" class="btn">Reset</button>
+								<button type="button" class="btn btn-warning"
+									onclick="location.href='../admin/board_free.jsp?bname=<%=bname%>';">리스트보기</button>
+							</div>
+						</form>
+						<%}else if(bname.equals("photo")){ %>
+							<form action="./proc/AdminUploadProc_img.jsp" name="writeFrm" method="post"  enctype="multipart/form-data">
+							<input type="hidden" name="bname" value="<%=bname%>" />
+							<table class="table table-bordered">
+								<colgroup>
+									<col width="20%" />
+									<col width="*" />
+								</colgroup>
+								<tbody>
+									<tr>
+										<th class="text-center" style="vertical-align: middle;">제목</th>
+										<td><input type="text" name="title" class="form-control" />
+										</td>
+									</tr>
+									<tr>
+										<th class="text-center" style="vertical-align: middle;">내용</th>
+										<td><textarea rows="10" name="content"
+												class="form-control"></textarea></td>
+									</tr>
+									<tr>
+										<th class="text-center" style="vertical-align: middle;">이미지</th>
+										<td><input type="file" name="img"
+											class="form-control" /></td>
+									</tr>
+								</tbody>
+							</table>
+
+							<div class="row text-center" style="">
+								<!-- 각종 버튼 부분 -->
+
+								<button type="submit" class="btn btn-danger">전송하기</button>
+								<button type="reset" class="btn">Reset</button>
+								<button type="button" class="btn btn-warning"
+									onclick="location.href='../admin/board_free.jsp?bname=<%=bname%>';">리스트보기</button>
+							</div>
+						</form>
+						<%} %>
+					</div>
 
 
 				<!-- ********************************************************************************************* -->

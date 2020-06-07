@@ -21,6 +21,7 @@ if(uri.indexOf("adminMain")>=0){
 	<li class="nav-item active"><a class="nav-link active" href="adminMain.jsp"> <i class="fas fa-fw fa-tachometer-alt"></i>
 			<span>관리자 리스트</span>
 	</a></li>
+	<br />
 	<li class="nav-item active"><a class="nav-link active" href="board_free.jsp?bname=notice"> <i
 			class="fas fa-fw fa-table"></i> <span>공지사항 관리</span>
 	</a></li>
@@ -36,4 +37,23 @@ if(uri.indexOf("adminMain")>=0){
 	<li class="nav-item active"><a class="nav-link active" href="board_free.jsp?bname=info"> <i
 			class="fas fa-fw fa-table"></i> <span>정보자료실 관리</span>
 	</a></li>
+	<br/>
+	<li class="nav-item active"><a class="nav-link active" href="../admin/board_community?bname=staff"> <i
+			class="fas fa-fw fa-table"></i> <span>직원자료실 관리</span>
+	</a></li>
+	<li class="nav-item active"><a class="nav-link active" href="../admin/board_community?bname=bohoja"> <i
+			class="fas fa-fw fa-table"></i> <span>보호자게시판 관리</span>
+	</a></li>
+	<br/>
+	<li class="nav-item active"><a class="nav-link active" href="board_request.jsp?bname=clean"> <i
+			class="fas fa-fw fa-table"></i> <span>블루크리닝 리스트</span>
+	</a></li>
+	<li class="nav-item active"><a class="nav-link active" href="board_request.jsp?bname=leaning"> <i
+			class="fas fa-fw fa-table"></i> <span>체험학습신청 리스트</span>
+	</a></li>
 </ul>
+
+
+
+
+

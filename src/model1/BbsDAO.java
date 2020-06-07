@@ -111,7 +111,7 @@ public class BbsDAO {
 			//String query = "select * from board where num=?";
 			
 			//변형된쿼리문 : member테이블과 join하여 사용자이름 가져옴.
-			String query = "SELECT B.*, M.name " + 
+			String query = "SELECT B.*, M.* " + 
 					" FROM membership M inner JOIN multi_board B ON M.id=B.id " + 
 					" WHERE num=?";
 			try {
@@ -123,14 +123,16 @@ public class BbsDAO {
 					dto.setTitle(rs.getString("title"));
 					dto.setContent(rs.getString("content"));
 					dto.setPostDate(rs.getDate("postdate"));
-					dto.setId(rs.getString("id"));
 					dto.setVisitcount(rs.getString("visitcount"));
-					dto.setName(rs.getString("name"));
 					dto.setOfile(rs.getString("ofile"));
 					dto.setSfile(rs.getString("sfile"));
 					dto.setImg(rs.getString("img"));
 					dto.setAttachedfile(rs.getString("attachedfile"));
 					dto.setBname(rs.getString("bname"));
+					//*********************************
+					dto.setId(rs.getString("id"));
+					dto.setName(rs.getString("name"));
+					
 					System.out.println("selectView num : "+rs.getString("num"));
 				}
 			} catch (Exception e) {
@@ -431,22 +433,20 @@ public class BbsDAO {
 		public int imgEdit(BbsDTO dto) {
 			int affected = 0;
 			try {
-				String query="update multi_board set id=?, title=?, content=?, bname=?, img=? where num=?";
+				String query="update multi_board set  title=?, content=?, bname=?, img=? where num=?";
 				psmt = con.prepareStatement(query);
 				
-				System.out.println(dto.getId());
 				System.out.println(dto.getTitle());
 				System.out.println(dto.getContent());
 				System.out.println(dto.getBname());
 				System.out.println(dto.getImg());
 				System.out.println(dto.getNum());
 				
-				psmt.setString(1, dto.getId());
-				psmt.setString(2, dto.getTitle());
-				psmt.setString(3, dto.getContent());
-				psmt.setString(4, dto.getBname());
-				psmt.setString(5, dto.getImg());
-				psmt.setString(6, dto.getNum());
+				psmt.setString(1, dto.getTitle());
+				psmt.setString(2, dto.getContent());
+				psmt.setString(3, dto.getBname());
+				psmt.setString(4, dto.getImg());
+				psmt.setString(5, dto.getNum());
 				
 				affected=psmt.executeUpdate();
 				

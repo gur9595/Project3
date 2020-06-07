@@ -168,22 +168,14 @@
 						
 						<div class="row text-center" style="">
 							<div class="col-6">
-								<%
-										if (session.getAttribute("USER_ID") != null
-												&& session.getAttribute("USER_ID").toString().equals(dto.getId())) {
-									%>
-
+			
 								<button type="button" class="btn btn-primary"
 									onclick="location.href='board_free_edit.jsp?num=<%=dto.getNum()%>&bname=<%=bname%>';">수정하기</button>
 								<button type="button" class="btn btn-success"
 									onclick="isDelete();">삭제하기</button>
 
-								<%
-										}
-									%>
-
 								<button type="button" class="btn btn-warning"
-									onclick="location.href='board_free?<%=queryStr%>';">리스트보기</button>
+									onclick="location.href='board_free.jsp?<%=queryStr%>';">리스트보기</button>
 
 							</div>
 
@@ -199,7 +191,7 @@
 							 	if(c){
 							 		var f= document.deleteFrm;
 							 		f.method = "post";
-							 		f.action = "./common/DeleteProc.jsp";
+							 		f.action = "./proc/AdminDeleteProc.jsp";
 							 		f.submit();
 							 	}
 							}

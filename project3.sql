@@ -158,6 +158,44 @@ INSERT INTO multi_board(title , content, id, bname)
 VALUES( '여긴 직원자료5','내용없음5', 'hihi','bohoja');
 
 
+SELECT 
+	B.*,M.*
+FROM membership M INNER JOIN multi_board B
+	ON M.id=B.id
+	WHERE num=2;
+	
+	
+CREATE TABLE request_form(
+	num INT NOT NULL auto_increment,
+	name VARCHAR(30) not null,
+	addr VARCHAR(100) not null,
+	tel varchar(30) not null,
+	phone varchar(30) not null,
+	email varchar(30) not null,
+	cleanType VARCHAR(30) NOT NULL,
+	cleanArea VARCHAR(30) NOT NULL,
+	hopeDate DATE NOT NULL,
+	regiType VARCHAR(30) NOT NULL,
+	note VARCHAR(50),
+	regiDate datetime default current_timestamp,
+	id VARCHAR(30) NOT NULL,
+	PRIMARY KEY (num)
+);
+	
+# 회원테이블과 게시판테이블의 참조 제약조건
+alter TABLE request_form ADD constraint fk_request_form_membership
+FOREIGN KEY (id) REFERENCES membership (id);
 
+INSERT INTO request_form(name , addr, tel, phone, email, cleanType, cleanArea, hopeDate, regiType, note, id)
+VALUES( 'apple','미국' ,'02-2222-5555', '010-9999-8888','apple@naver.com', '분리수거', '200평', '2080-11-27', '예약신청' ,'없음' ,'hi123');
+
+	
+	
+	
+	
+	
+	
+	
+	
 
 

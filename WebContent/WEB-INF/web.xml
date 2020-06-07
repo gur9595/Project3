@@ -11,7 +11,7 @@
   	<url-pattern>/main/main.do</url-pattern>
   </servlet-mapping>
   
-     <!-- 자료실 리스트 -->
+    <!-- 자료실 리스트 -->
    <servlet>
       <servlet-name>DataRoomList</servlet-name>
       <servlet-class>controller.ListCtrl</servlet-class>
@@ -70,6 +70,68 @@
       <servlet-name>DataRoomDelete</servlet-name>
       <url-pattern>/community/DataDelete</url-pattern>
    </servlet-mapping>
+   
+  <!-- **********************************관리자 모드 *****************************-->
+  <!-- 자료실 리스트 -->
+   <servlet>
+      <servlet-name>adminList</servlet-name>
+      <servlet-class>controller.ListCtrl2</servlet-class>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>adminList</servlet-name>
+      <url-pattern>/admin/board_community</url-pattern>
+   </servlet-mapping>
+  
+  <!-- 자료실 글쓰기 -->
+   <servlet>
+      <servlet-name>adminWrite</servlet-name>
+      <servlet-class>controller.WriteCtrl2</servlet-class>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>adminWrite</servlet-name>
+      <url-pattern>/admin/DataWrite2</url-pattern>
+   </servlet-mapping>
+  
+  <!-- 파일다운로드 -->
+  <servlet>
+      <servlet-name>adminDownload</servlet-name>
+      <servlet-class>controller.DownloadCtrl2</servlet-class>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>adminDownload</servlet-name>
+      <url-pattern>/admin/Download2</url-pattern>
+   </servlet-mapping>
+   
+  <!-- 게시글 상세보기(상세보기) -->
+  <servlet>
+      <servlet-name>adminView</servlet-name>
+      <servlet-class>controller.ViewCtrl2</servlet-class>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>adminView</servlet-name>
+      <url-pattern>/admin/DataView2</url-pattern>
+   </servlet-mapping>
+  
+  <!-- 자료실 수정 -->
+   <servlet>
+      <servlet-name>adminEdit</servlet-name>
+      <servlet-class>controller.EditCtrl2</servlet-class>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>adminEdit</servlet-name>
+      <url-pattern>/admin/DataEdit2</url-pattern>
+   </servlet-mapping>
+  
+  <!-- 삭제처리 -->
+   <servlet>
+      <servlet-name>adminDelete</servlet-name>
+      <servlet-class>controller.DeleteCtrl2</servlet-class>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>adminDelete</servlet-name>
+      <url-pattern>/admin/DataDelete2</url-pattern>
+   </servlet-mapping>
+  
   
   
   <!-- 초기화 파라미터 -->
