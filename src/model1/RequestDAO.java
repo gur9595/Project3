@@ -10,7 +10,9 @@ import java.util.Vector;
 
 import javax.servlet.ServletContext;
 
-public class RequestDAO {
+import connect.Dbinfo;
+
+public class RequestDAO implements Dbinfo{
 
 	Connection con;
 	PreparedStatement psmt;
@@ -20,10 +22,10 @@ public class RequestDAO {
 
 		try {	
 			Class.forName(driver);
-			String id ="suamil_user";
-			String pw = "1234";
+			/*String id ="suamil_user";
+			String pw = "1234";*/
 
-			con = DriverManager.getConnection(url,id,pw);
+			con = DriverManager.getConnection(url,Dbinfo.id,Dbinfo.pw);
 			System.out.println("DB연결성공");
 
 		} catch (Exception e) {
@@ -34,10 +36,10 @@ public class RequestDAO {
 	public RequestDAO(ServletContext ctx) {
 		try {	
 			Class.forName(ctx.getInitParameter("MariaJDBCDriver"));
-			String id ="suamil_user";
-			String pw = "1234";
+			/*String id ="suamil_user";
+			String pw = "1234";*/
 
-			con = DriverManager.getConnection(ctx.getInitParameter("MariaConnectURL"),id,pw);
+			con = DriverManager.getConnection(ctx.getInitParameter("MariaConnectURL"),Dbinfo.id,Dbinfo.pw);
 			System.out.println("DB연결성공");
 
 		} catch (Exception e) {

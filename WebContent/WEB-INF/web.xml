@@ -142,7 +142,7 @@
   </context-param>
   <context-param>
   	<param-name>MariaConnectURL</param-name>
-  	<param-value>jdbc:mariadb://127.0.0.1:3306/suamil_db</param-value>
+  	<param-value>jdbc:mariadb://127.0.0.1:3306/tkdgur95</param-value>
   </context-param>
   
   <!-- 게시판 페이지에 사용할 상수 -->

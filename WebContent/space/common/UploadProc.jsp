@@ -22,10 +22,9 @@ FileRenamePolicy policy = new DefaultFileRenamePolicy();
 
 MultipartRequest mr = null;
 String name= null; //이름
-String title= request.getParameter("title");
-String content= request.getParameter("content");
-String bname = request.getParameter("bname");
-StringBuffer inter= new StringBuffer(); //관심사항을 저장함 
+String title= null;
+String content= null;
+String bname = null;
 File oldFile =null;
 File newFile=null;
 String realFileName=null;

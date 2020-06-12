@@ -54,6 +54,7 @@ try{
 	if(affected==1){
 		
 		response.sendRedirect("../../space/sub03.jsp?bname=photo");
+		
 	}
 	
 }catch(Exception e){

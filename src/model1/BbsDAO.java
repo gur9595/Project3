@@ -10,19 +10,21 @@ import java.util.Vector;
 
 import javax.servlet.ServletContext;
 
+import connect.Dbinfo;
 import model1.BbsDTO;
 
-public class BbsDAO {
+public class BbsDAO implements Dbinfo{
 	Connection con;
 	PreparedStatement psmt;
 	ResultSet rs;
+	
 	public BbsDAO(String driver , String url) {
 		try {	
 			Class.forName(driver);
-			String id ="suamil_user";
-			String pw = "1234";
+	/*		String id ="suamil_user";
+			String pw = "1234";*/
 
-			con = DriverManager.getConnection(url,id,pw);
+			con = DriverManager.getConnection(url,Dbinfo.id,Dbinfo.pw);
 			System.out.println("DB연결성공");
 
 		} catch (Exception e) {
@@ -34,10 +36,10 @@ public class BbsDAO {
 		
 		try {	
 			Class.forName(ctx.getInitParameter("MariaJDBCDriver"));
-			String id ="suamil_user";
-			String pw = "1234";
+			/*String id ="suamil_user";
+			String pw = "1234";*/
 
-			con = DriverManager.getConnection(ctx.getInitParameter("MariaConnectURL"),id,pw);
+			con = DriverManager.getConnection(ctx.getInitParameter("MariaConnectURL"),Dbinfo.id,Dbinfo.pw);
 			System.out.println("DB연결성공");
 
 		} catch (Exception e) {
@@ -87,7 +89,6 @@ public class BbsDAO {
 			
 				e.printStackTrace();
 			}
-			
 			return affected;
 		}
 	
@@ -377,7 +378,7 @@ public class BbsDAO {
 				
 				e.printStackTrace();
 			}
-			return affeced;
+			return affeced; 
 		}
 	
 		public int myfileEdit(BbsDTO dto) {
@@ -457,7 +458,35 @@ public class BbsDAO {
 			return affected;
 		}
 	
-	
+		//게시판 리스트 페이지 처리
+				public List<BbsDTO> selectFreeboard(String bname, int startNum, int endNum){
+					List<BbsDTO> bbs= new Vector<BbsDTO>();
+				
+					String query = "SELECT * FROM multi_board where bname='"+bname+"' ORDER BY num DESC limit ?,?";
+				      
+				      System.out.println("쿼리문:" + query);
+					
+					try {
+						psmt= con.prepareStatement(query);
+						
+						psmt.setInt(1,startNum);
+						psmt.setInt(2,endNum);
+						
+						rs= psmt.executeQuery();
+						while(rs.next()) {
+							BbsDTO dto= new BbsDTO();
+							dto.setTitle(rs.getString("title"));
+							dto.setPostDate(rs.getDate("postdate"));
+							dto.setImg(rs.getString("img"));
+							dto.setNum(rs.getString("num"));
+							bbs.add(dto);
+						}
+					} catch (Exception e) {
+						System.out.println("selectListPage시 예외발생");
+						e.printStackTrace();
+					}
+					return bbs;
+				}
 	
 	
 	

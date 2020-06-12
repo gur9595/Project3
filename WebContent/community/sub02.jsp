@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/global_head.jsp" %>
 <%@ include file="../member/common/isFlag.jsp"%>
+<%@include file="../member/common/isLogin.jsp"%>
 
  <body>
 	<center>
